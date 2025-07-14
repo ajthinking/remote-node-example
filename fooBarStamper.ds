@@ -1,0 +1,200 @@
+{
+    "nodes": [
+        {
+            "id": "Input.1",
+            "type": "Input",
+            "label": "Input",
+            "inputs": [
+                {
+                    "id": "Input.1.input",
+                    "name": "input",
+                    "schema": {}
+                }
+            ],
+            "outputs": [
+                {
+                    "id": "Input.1.output",
+                    "name": "output",
+                    "schema": {}
+                }
+            ],
+            "params": [
+                {
+                    "name": "port_name",
+                    "type": "StringableParam",
+                    "label": "Port Name",
+                    "help": "The name of the input port.",
+                    "multiline": false,
+                    "canInterpolate": true,
+                    "interpolate": true,
+                    "casts": [
+                        {
+                            "type": "stringCast",
+                            "label": "String",
+                            "shortLabel": "str"
+                        }
+                    ],
+                    "input": {
+                        "rawValue": "input",
+                        "Cast": "stringCast"
+                    }
+                }
+            ],
+            "position": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "id": "Map.1",
+            "type": "Map",
+            "label": "Map",
+            "inputs": [
+                {
+                    "id": "Map.1.input",
+                    "name": "input",
+                    "schema": {}
+                }
+            ],
+            "outputs": [
+                {
+                    "id": "Map.1.output",
+                    "name": "output",
+                    "schema": {}
+                }
+            ],
+            "params": [
+                {
+                    "name": "mapper",
+                    "type": "StringableParam",
+                    "label": "mapper",
+                    "help": "",
+                    "multiline": true,
+                    "canInterpolate": true,
+                    "interpolate": true,
+                    "evaluations": [
+                        {
+                            "type": "JSON",
+                            "label": "JSON",
+                            "shortLabel": "json"
+                        },
+                        {
+                            "type": "JS_FUNCTION",
+                            "label": "JS Function",
+                            "shortLabel": "fn"
+                        },
+                        {
+                            "type": "JS_EXPRESSION",
+                            "label": "JS Expression",
+                            "shortLabel": "expr"
+                        }
+                    ],
+                    "casts": [
+                        {
+                            "type": "numberCast",
+                            "label": "Number",
+                            "shortLabel": "num"
+                        },
+                        {
+                            "type": "stringCast",
+                            "label": "String",
+                            "shortLabel": "str"
+                        }
+                    ],
+                    "input": {
+                        "rawValue": "item => ({\n  ...item,\n  global_param_access: '@{stamp}',\n})",
+                        "Evaluation": "JS_FUNCTION"
+                    }
+                }
+            ],
+            "position": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        {
+            "id": "Output.1",
+            "type": "Output",
+            "label": "Output",
+            "inputs": [
+                {
+                    "id": "Output.1.input",
+                    "name": "input",
+                    "schema": {}
+                }
+            ],
+            "outputs": [
+                {
+                    "id": "Output.1.output",
+                    "name": "output",
+                    "schema": {}
+                }
+            ],
+            "params": [
+                {
+                    "name": "port_name",
+                    "type": "StringableParam",
+                    "label": "Port Name",
+                    "help": "The name of the output port.",
+                    "multiline": false,
+                    "canInterpolate": true,
+                    "interpolate": true,
+                    "casts": [
+                        {
+                            "type": "stringCast",
+                            "label": "String",
+                            "shortLabel": "str"
+                        }
+                    ],
+                    "input": {
+                        "rawValue": "stamped",
+                        "Cast": "stringCast"
+                    }
+                }
+            ],
+            "position": {
+                "x": 0,
+                "y": 0
+            }
+        }
+    ],
+    "links": [
+        {
+            "id": "Input.1--->Map.1",
+            "sourcePortId": "Input.1.output",
+            "targetPortId": "Map.1.input"
+        },
+        {
+            "id": "Map.1--->Output.1",
+            "sourcePortId": "Map.1.output",
+            "targetPortId": "Output.1.input"
+        }
+    ],
+    "params": [
+        {
+            "name": "stamp",
+            "type": "StringableParam",
+            "label": "stamp",
+            "help": "",
+            "multiline": false,
+            "canInterpolate": true,
+            "interpolate": true,
+            "casts": [
+                {
+                    "type": "stringCast",
+                    "label": "String",
+                    "shortLabel": "str"
+                }
+            ],
+            "input": {
+                "rawValue": "secret message passed",
+                "Cast": "stringCast"
+            }
+        }
+    ],
+    "viewport": {
+        "x": 0,
+        "y": 0,
+        "zoom": 1
+    }
+}
