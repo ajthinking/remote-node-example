@@ -102,7 +102,7 @@
                         }
                     ],
                     "input": {
-                        "rawValue": "item => ({\n  ...item,\n also: 1,\n  global_param_access: '@{stamp}',\n})",
+                        "rawValue": "item => ({\n  ...item,\n also: 2,\n  global_param_access: '@{stamp}',\n})",
                         "Evaluation": "JS_FUNCTION"
                     }
                 }
